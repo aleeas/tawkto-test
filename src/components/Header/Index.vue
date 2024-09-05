@@ -54,9 +54,9 @@ export default {};
         border-right: 0;
         border-radius: $border-radius 0 0 $border-radius;
         outline: none;
-      }
-      input::placeholder {
-        color: $text-gray;
+        &::placeholder {
+          color: $text-gray;
+        }
       }
 
       button {

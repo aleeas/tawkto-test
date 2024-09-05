@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <tawk-header />
+    <TawkHeader />
     <div class="layout">
       <main class="container">
         <div class="content">
@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import Header from "../Header/Index.vue";
+import TawkHeader from "../Header/Index.vue";
 
 export default {
   components: {
-    "tawk-header": Header,
+    TawkHeader,
   },
 };
 </script>

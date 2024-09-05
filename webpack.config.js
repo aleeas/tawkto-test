@@ -18,6 +18,10 @@ module.exports = {
         use: "vue-loader",
       },
       {
+        test: /\.svg$/,
+        use: 'url-loader' // or 'url-loader'
+      },
+      {
         test: /\.scss$/,
         use: ["vue-style-loader", "css-loader", "sass-loader"],
       },
