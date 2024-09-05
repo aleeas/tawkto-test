@@ -1,6 +1,8 @@
 <template>
-  <div class="card-container">
-    <Card v-for="card in sortedCategories" :key="card.id" :data="card" />
+  <div>
+    <div class="card-container">
+      <Card v-for="card in filteredCategories" :key="card.id" :data="card" />
+    </div>
   </div>
 </template>
 
@@ -20,8 +22,8 @@ export default {
     };
   },
   computed: {
-    sortedCategories() {
-      return this.cardData.sort((a, b) => a.order - b.order);
+    filteredCategories() {
+      return this.cardData.filter(category => category.enabled);
     },
   },
   mounted() {
@@ -32,8 +34,7 @@ export default {
       apiClient
         .get("/api/categories")
         .then((response) => {
-          // console.log("Data:", response.data);
-          this.cardData = response.data;
+          this.cardData = response.data.sort((a, b) => a.order - b.order);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);

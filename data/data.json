@@ -61,7 +61,7 @@
 			"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis massa ac augue tristique sagittis.",
 			"createdOn": "2019-12-19T09:56:05.344Z",
 			"updatedOn": "2019-12-19T09:56:48.796Z",
-			"enabled": true,
+			"enabled": false,
 			"order": 7,
 			"icon": "shopping-cart",
 			"totalArticle": 5

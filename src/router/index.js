@@ -1,10 +1,9 @@
-// import AboutComponent from '../views/AboutComponent.vue';
-// import ContactComponent from '../views/ContactComponent.vue';
 import Vue from "vue";
 import Router from "vue-router";
 Vue.use(Router);
 
-const HomeComponent = () => import("../views/HomeComponent/Index.vue");
+const HomePage = () => import("../views/Home/Index.vue");
+import SearchResults from "../views/Search/Index.vue";
 
 export default new Router({
   mode: "history",
@@ -12,7 +11,12 @@ export default new Router({
     {
       path: "/",
       name: "home",
-      component: HomeComponent,
+      component: HomePage,
+    },
+    {
+      path: "/search",
+      name: "searchResults",
+      component: SearchResults,
     },
   ],
 });

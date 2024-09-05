@@ -5,21 +5,39 @@
       <h3>Everything you need to manage your messaging</h3>
     </div>
     <div class="header-search">
-      <div class="input-with-button">
-        <input type="text" placeholder="Search for answers" />
-        <button type="button"><i class="fas fa-search"></i></button>
-      </div>
+      <form method="POST" @submit.prevent="handleSearch">
+        <input
+          type="text"
+          placeholder="Search for answers"
+          v-model="searchQuery"
+        />
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "HeaderComponent",
+  data() {
+    return {
+      searchQuery: "",
+    };
+  },
+  methods: {
+    handleSearch() {
+      this.$emit('search', this.searchQuery);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../../scss/variables";
 #header-wrapper {
+  background: $bg-white-color;
+  padding-bottom: 74px;
   margin-bottom: 74px;
   #header-text {
     text-align: center;
@@ -42,11 +60,12 @@ export default {};
     }
   }
   .header-search {
-    .input-with-button {
+    form {
       display: flex;
       align-items: center;
       max-width: 720px;
       margin: auto;
+      width: 100%;
       input {
         flex: 1;
         padding: $input-padding;

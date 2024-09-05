@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: 'url-loader' // or 'url-loader'
+        use: "url-loader", // or 'url-loader'
       },
       {
         test: /\.scss$/,
@@ -50,11 +50,11 @@ module.exports = {
         res.json(dataObj.categories);
       });
 
-	  app.get("/api/articles", function (req, res) {
+      app.get("/api/articles", function (req, res) {
         res.json(dataObj.articles);
       });
 
-	  app.get("/api/article/*", function (req, res) {
+      app.get("/api/article/*", function (req, res) {
         let articles = {};
         const articleId = req.params["0"];
 
@@ -93,8 +93,20 @@ module.exports = {
         res.json(author);
       });
 
-      app.get("/api/search/*", function (req, res) {
-        res.json(dataObj.categories);
+      app.get("/api/search/:query?", function (req, res) {
+        const searchQuery = req.params.query ? req.params.query.toLowerCase() : "";
+
+        // If the query is null, undefined, or an empty string, return all categories
+        if (!searchQuery) {
+          return res.json(dataObj.categories);
+        }
+
+        // Filter categories based on the query
+        const filteredCategories = dataObj.categories.filter((category) =>
+          category.title.toLowerCase().includes(searchQuery)
+        );
+
+        res.json(filteredCategories); // Return the filtered results
       });
     },
   },

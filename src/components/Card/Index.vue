@@ -12,6 +12,7 @@
 <script>
 import moment from 'moment';
 import IconComponent from "../../components/Icon/Index.vue";
+
 export default {
   name: "CardComponent",
   components: {

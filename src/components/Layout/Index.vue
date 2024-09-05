@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <TawkHeader />
+    <TawkHeader @search="handleSearch"/>
     <div class="layout">
       <main class="container">
         <div class="content">
@@ -16,9 +16,22 @@
 import TawkHeader from "../Header/Index.vue";
 
 export default {
+  name: 'LayoutComponent',
   components: {
     TawkHeader,
   },
+
+  data() {
+    return {
+      searchQuery: ""
+    };
+  },
+  methods: {
+    handleSearch(query) {
+      // Navigate to the search results page with the query as a URL parameter
+      this.$router.push({ name: 'searchResults', query: { q: query } });
+    }
+  }
 };
 </script>
 
