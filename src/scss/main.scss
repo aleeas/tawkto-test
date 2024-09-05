@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700&subset=latin-ext");
+@import 'font-awesome.css';
+
+// Define variables for reusable values
+$container-max-width: 1200px;
+$container-padding: 15px;
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+  margin-left: auto;
+  margin-right: auto;
+
+  // Make the container responsive
+  @media (max-width: 1200px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
