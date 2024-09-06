@@ -78,5 +78,11 @@ export default {
     gap: 18px;
     flex-direction: column;
   }
+  @media (max-width: 600px) {
+    display:block;
+    .detail-list{
+       max-width: 93%;
+    }
+  }
 }
 </style>

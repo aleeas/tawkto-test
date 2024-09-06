@@ -4,13 +4,15 @@
     <h4>{{ data.title }}</h4>
     <div class="description">
       <h5>{{ data.totalArticle }} articles</h5>
-      <div class="updated-on">Last update {{ daysAgo(data.updatedOn) }} days ago</div>
+      <div class="updated-on">
+        Last update {{ daysAgo(data.updatedOn) }} days ago
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import moment from 'moment';
+import moment from "moment";
 import IconComponent from "../../components/Icon/Index.vue";
 
 export default {
@@ -29,11 +31,11 @@ export default {
     daysAgo(date) {
       const now = moment.utc(); // Use UTC for current date
       const pastDate = moment.utc(date); // Parse the date as UTC
-      return now.diff(pastDate, 'days');
+      return now.diff(pastDate, "days");
     },
-    goToDetail(id){
-      this.$router.push({ name: 'detail', params: { id } });
-    }
+    goToDetail(id) {
+      this.$router.push({ name: "detail", params: { id } });
+    },
   },
 };
 </script>
@@ -68,6 +70,11 @@ export default {
   }
   @media (min-width: 576px) {
     flex: 1 1 50%; // 2 items per row on small screens
+  }
+
+  @media (max-width: 600px) {
+    max-width: 100%;
+    flex: 0.92; // 2 items per row on small screens
   }
 }
 </style>

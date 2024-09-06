@@ -53,41 +53,52 @@ export default {
   background: $bg-white-color;
   border-radius: $border-radius;
   cursor: pointer;
+
   .card-content {
     padding: 16px 30px;
   }
-  .card-info{
-    margin-top:19px;
-    padding-top: 19px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom:30px;
+
+  .card-info {
+    margin-top: 19px;
+    padding: 19px 30px 30px;
     border-top: 1px solid #EEEEEE;
-    i{
-        color: $green;
+
+    i {
+      color: $green;
     }
-    p{
-        font-size: 13px;
-        color: $text-gray;
+
+    p {
+      font-size: 13px;
+      color: $text-gray;
     }
   }
+
   h4 {
     font-size: 20px;
     line-height: 24px;
     color: $text-black;
     margin-top: 5px;
   }
+
   h5 {
     color: $green;
     margin-bottom: 5px;
     font-weight: normal;
   }
+
   .description {
     text-align: center;
+
     .updated-on {
       color: $text-gray;
       font-size: 11px;
     }
   }
+  @media (max-width: 600px) {
+    max-width: 93%;
+    margin-bottom: 20px;
+  }
+ 
 }
+
 </style>
