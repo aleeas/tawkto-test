@@ -3,7 +3,6 @@
     <TawkHeader @search="handleSearch" />
     <div class="layout">
       <main>
-          <!-- main content rendered here -->
           <router-view />
       </main>
     </div>
@@ -31,8 +30,7 @@ export default {
 #app {
   .layout {
     background-color: $bg-gray;
-    height: 100%;
-    padding-bottom: 60px;
+    height: 100dvh;
   }
 }
 </style>

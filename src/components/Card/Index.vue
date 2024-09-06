@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="goToDetail(data.id)">
     <IconComponent :icon="data.icon" />
     <h4>{{ data.title }}</h4>
     <div class="description">
@@ -31,6 +31,9 @@ export default {
       const pastDate = moment.utc(date); // Parse the date as UTC
       return now.diff(pastDate, 'days');
     },
+    goToDetail(id){
+      this.$router.push({ name: 'detail', params: { id } });
+    }
   },
 };
 </script>
@@ -45,6 +48,7 @@ export default {
   max-width: 315px;
   background: $bg-white-color;
   border-radius: $border-radius;
+  cursor: pointer;
   h4 {
     font-size: 20px;
     line-height: 24px;

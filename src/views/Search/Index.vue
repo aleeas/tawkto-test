@@ -54,16 +54,4 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.container {
-  .content {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-  }
-}
-</style>
+
