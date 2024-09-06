@@ -1,7 +1,15 @@
 <template>
   <div>
-    <div class="card-container">
-      <Card v-for="card in filteredCategories" :key="card.id" :data="card" />
+    <div class="container">
+      <div class="content">
+        <div class="card-container">
+          <Card
+            v-for="card in filteredCategories"
+            :key="card.id"
+            :data="card"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -47,9 +55,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.container {
+  .content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
 }
 </style>

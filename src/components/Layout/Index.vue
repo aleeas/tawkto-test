@@ -1,12 +1,10 @@
 <template>
   <div id="app">
-    <TawkHeader @search="handleSearch"/>
+    <TawkHeader @search="handleSearch" />
     <div class="layout">
-      <main class="container">
-        <div class="content">
+      <main>
           <!-- main content rendered here -->
           <router-view />
-        </div>
       </main>
     </div>
   </div>
@@ -16,15 +14,8 @@
 import TawkHeader from "../Header/Index.vue";
 
 export default {
-  name: 'LayoutComponent',
   components: {
     TawkHeader,
-  },
-
-  data() {
-    return {
-      searchQuery: ""
-    };
   },
   methods: {
     handleSearch(query) {
@@ -40,13 +31,8 @@ export default {
 #app {
   .layout {
     background-color: $bg-gray;
-    height: 100vh;
-  }
-  .container {
-    .content {
-      padding-top: 60px;
-      padding-bottom: 99px;
-    }
+    height: 100%;
+    padding-bottom: 60px;
   }
 }
 </style>

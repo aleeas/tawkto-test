@@ -1,7 +1,15 @@
 <template>
   <div>
-    <div class="card-container">
-      <Card v-for="card in filteredCategories" :key="card.id" :data="card" />
+    <div class="container">
+      <div class="content">
+        <div class="card-container">
+          <Card
+            v-for="card in filteredCategories"
+            :key="card.id"
+            :data="card"
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -9,11 +17,13 @@
 <script>
 import Card from "../../components/Card/Index.vue";
 import apiClient from "../../utils/api";
+import TawkHeader from "../../components/Header/Index.vue";
 
 export default {
   name: "HomeComponent",
   components: {
     Card,
+    TawkHeader,
   },
 
   data() {
@@ -23,7 +33,7 @@ export default {
   },
   computed: {
     filteredCategories() {
-      return this.cardData.filter(category => category.enabled);
+      return this.cardData.filter((category) => category.enabled);
     },
   },
   mounted() {
@@ -44,9 +54,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.container {
+  .content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  }
 }
 </style>

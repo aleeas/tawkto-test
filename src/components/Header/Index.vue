@@ -37,7 +37,6 @@ export default {
 @import "../../scss/variables";
 #header-wrapper {
   background: $bg-white-color;
-  padding-bottom: 74px;
   margin-bottom: 74px;
   #header-text {
     text-align: center;

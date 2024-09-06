@@ -2,7 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 Vue.use(Router);
 
-const HomePage = () => import("../views/Home/Index.vue");
+// const HomePage = () => import("../views/Home/Index.vue");
+import HomePage from "../views/Home/Index.vue";
 import SearchResults from "../views/Search/Index.vue";
 
 export default new Router({
