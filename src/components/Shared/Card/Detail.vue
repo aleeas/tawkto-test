@@ -1,10 +1,13 @@
 <template>
   <div class="card">
     <div class="card-content">
+      <div class="right-side">
+        <img src="/assets/images/file-text.svg" alt="file-text" />
+        <span>{{ data.totalArticle }}</span>
+      </div>
       <IconComponent v-if="data.icon" :icon="data.icon" />
       <h4>{{ data.title }}</h4>
       <div class="description">
-        <h5>{{ data.totalArticle }} articles</h5>
         <div class="updated-on">
           Updated {{ daysAgo(data.updatedOn) }} days ago
         </div>
@@ -12,8 +15,8 @@
     </div>
 
     <div class="card-info">
-        <i class="fas fa-info-circle"></i>
-        <p>{{ data.description }}</p>
+      <i class="fas fa-info-circle"></i>
+      <p>{{ data.description }}</p>
     </div>
   </div>
 </template>
@@ -56,12 +59,20 @@ export default {
 
   .card-content {
     padding: 16px 30px;
+    .right-side {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      span{
+        color:$text-gray
+      }
+    }
   }
 
   .card-info {
     margin-top: 19px;
     padding: 19px 30px 30px;
-    border-top: 1px solid #EEEEEE;
+    border-top: 1px solid #eeeeee;
 
     i {
       color: $green;
@@ -78,6 +89,7 @@ export default {
     line-height: 24px;
     color: $text-black;
     margin-top: 5px;
+    margin-bottom: 5px;
   }
 
   h5 {
@@ -98,7 +110,5 @@ export default {
     max-width: 93%;
     margin-bottom: 20px;
   }
- 
 }
-
 </style>
