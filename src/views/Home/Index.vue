@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="container">
+    <div v-if="isLoading" class="text-center"><span class="loader"></span></div>
+    <div class="container" v-else>
       <div class="content">
         <div class="card-container">
           <Card
@@ -15,9 +16,9 @@
 </template>
 
 <script>
-import Card from "../../components/Card/Index.vue";
+import Card from "../../components/Shared/Card/Index.vue";
 import apiClient from "../../utils/api";
-import TawkHeader from "../../components/Header/Index.vue";
+import TawkHeader from "../../components/Shared/Header/Index.vue";
 
 export default {
   name: "HomeComponent",
@@ -29,6 +30,7 @@ export default {
   data() {
     return {
       cardData: [],
+      isLoading: false,
     };
   },
   computed: {
@@ -41,6 +43,7 @@ export default {
   },
   methods: {
     fetchData() {
+      this.isLoading = true;
       apiClient
         .get("/api/categories")
         .then((response) => {
@@ -48,6 +51,9 @@ export default {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
   },

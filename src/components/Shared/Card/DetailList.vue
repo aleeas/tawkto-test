@@ -32,7 +32,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../scss/variables";
+@import "../../../scss/variables";
 .card {
   border: 1px solid #eeeeee;
   height: 100%;

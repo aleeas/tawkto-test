@@ -3,25 +3,27 @@
     <TawkHeader @search="handleSearch" />
     <div class="layout">
       <main>
-          <router-view />
+        <router-view />
       </main>
     </div>
   </div>
 </template>
 
 <script>
-import TawkHeader from "../Header/Index.vue";
+import TawkHeader from "../Shared/Header/Index.vue";
 
 export default {
   components: {
     TawkHeader,
   },
+
   methods: {
     handleSearch(query) {
       // Navigate to the search results page with the query as a URL parameter
-      this.$router.push({ name: 'searchResults', query: { q: query } });
-    }
-  }
+      this.$router.push({ name: "searchResults", query: { q: query } });
+ 
+    },
+  },
 };
 </script>
 
@@ -31,6 +33,10 @@ export default {
   .layout {
     background-color: $bg-gray;
     height: 100%;
+    .loading {
+      text-align: center;
+    }
   }
 }
+
 </style>

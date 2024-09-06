@@ -13,7 +13,7 @@
 
 <script>
 import moment from "moment";
-import IconComponent from "../../components/Icon/Index.vue";
+import IconComponent from "../Icon/Index.vue";
 
 export default {
   name: "CardComponent",
@@ -40,7 +40,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../scss/variables";
+@import "../../../scss/variables";
 .card {
   text-align: center;
   flex: 1 1 33.333%;

@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import BreadCrumbs from "../../../components/Breadcrumbs/Index.vue";
-import Card from "../../../components/Card/Index.vue";
-import CardDetail from "../../../components/Card/Detail.vue";
-import CardDetailList from "../../../components/Card/DetailList.vue";
+import BreadCrumbs from "../../../components/Shared/Breadcrumbs/Index.vue";
+import Card from "../../../components/Shared/Card/Index.vue";
+import CardDetail from "../../../components/Shared/Card/Detail.vue";
+import CardDetailList from "../../../components/Shared/Card/DetailList.vue";
 import { PUBLISHED } from "../../../constant/data-constant";
 import apiClient from "../../../utils/api";
 import { Carousel, Slide } from "vue-carousel";

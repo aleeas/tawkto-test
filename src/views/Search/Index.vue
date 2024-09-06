@@ -1,6 +1,13 @@
 <template>
   <div>
-    <div class="container">
+    <div v-if="isLoading" class="loader-wrapper"><span class="loader"></span></div>
+    <div v-if="filteredCategories.length === 0 && !isLoading" class="loader-wrapper">
+      <div class="text-center">
+        <img src="/assets/images/file-text.svg" alt="file-text" height="120"/>
+        <p>No Data Available</p>
+      </div>
+    </div>
+    <div class="container" v-else>
       <div class="content">
         <div class="card-container">
           <Card
@@ -15,7 +22,7 @@
 </template>
 
 <script>
-import Card from "../../components/Card/Index.vue";
+import Card from "../../components/Shared/Card/Index.vue";
 import apiClient from "../../utils/api";
 
 export default {
@@ -27,6 +34,7 @@ export default {
   data() {
     return {
       filteredCategories: [],
+      isLoading: false,
     };
   },
 
@@ -38,6 +46,7 @@ export default {
   },
   methods: {
     performSearch() {
+      this.isLoading = true;
       const query = this.$route.query.q;
       apiClient
         .get(`/api/search/${query}`)
@@ -49,9 +58,19 @@ export default {
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
   },
 };
 </script>
-
+<style lang="scss" scoped>
+.loader-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

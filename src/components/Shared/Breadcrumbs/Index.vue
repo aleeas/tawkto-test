@@ -23,7 +23,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../scss/variables";
+@import "../../../scss/variables";
 .breadcrumb {
   ul {
     list-style-type: none;
