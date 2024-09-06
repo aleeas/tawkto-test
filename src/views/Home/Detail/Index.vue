@@ -1,9 +1,16 @@
 <template>
   <div class="container">
     <div class="content">
-      <BreadCrumbs :data="detailData"/>
+      <BreadCrumbs :data="detailData" />
       <div class="wrapper">
-         <CardDetail :data="detailData"/>
+        <CardDetail :data="detailData" />
+        <div class="detail-list">
+          <CardDetailList
+            v-for="article in articleData"
+            :data="article"
+            :key="article.id"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -12,31 +19,46 @@
 <script>
 import BreadCrumbs from "../../../components/Breadcrumbs/Index.vue";
 import CardDetail from "../../../components/Card/Detail.vue";
+import CardDetailList from "../../../components/Card/DetailList.vue";
+import { PUBLISHED } from "../../../constant/data-constant";
 import apiClient from "../../../utils/api";
 
 export default {
   components: {
     BreadCrumbs,
-    CardDetail
+    CardDetail,
+    CardDetailList,
   },
   data() {
     return {
-      detailData: {}
+      detailData: {},
+      articleData: [],
     };
   },
   mounted() {
-    // You can fetch data based on the ID here
-    // For example: this.fetchData(this.id);
     this.fetchData();
+    this.fetchDataArticle();
   },
   methods: {
-    // Example method to fetch data
     fetchData() {
       apiClient
         .get(`/api/category/${this.$route.params.id}`)
         .then((response) => {
-            console.log(response.data)
           this.detailData = response.data;
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    },
+
+    fetchDataArticle() {
+      apiClient
+        .get(`/api/articles`)
+        .then((response) => {
+          const data = response.data.filter(
+            (data) => data.status === PUBLISHED
+          );
+          this.articleData = data;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -47,9 +69,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .wrapper{
-        display: flex;
-        gap: 60px;
-        justify-content: space-between;
-    }
+.wrapper {
+  display: flex;
+  gap: 60px;
+  .detail-list{
+    display: flex;
+    flex: 1;
+    gap: 18px;
+    flex-direction: column;
+  }
+}
 </style>

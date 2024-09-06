@@ -30,7 +30,7 @@ export default {
 #app {
   .layout {
     background-color: $bg-gray;
-    height: 100dvh;
+    height: 100%;
   }
 }
 </style>
