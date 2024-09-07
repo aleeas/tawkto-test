@@ -70,9 +70,11 @@ export default {
     };
   },
   mounted() {
-    this.fetchData();
-    this.fetchDataArticle();
-    this.fetchDataCategories();
+    Promise.all([
+      this.fetchData(),
+      this.fetchDataArticle(),
+      this.fetchDataCategories(),
+    ]).catch((error) => console.error("Error fetching data:", error));
   },
   computed: {
     filteredCategories() {
@@ -80,40 +82,33 @@ export default {
     },
   },
   methods: {
-    fetchData() {
-      apiClient
-        .get(`/api/category/${this.$route.params.id}`)
-        .then((response) => {
-          this.detailData = response.data;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+    async fetchData() {
+      try {
+        const { id } = this.$route.params;
+        const response = await apiClient.get(`/api/category/${id}`);
+        this.detailData = response.data;
+      } catch (error) {
+        console.error("Error fetching category data:", error);
+      }
     },
 
-    fetchDataCategories() {
-      apiClient
-        .get(`/api/categories`)
-        .then((response) => {
-          this.categories = response.data.sort((a, b) => a.order - b.order);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+    async fetchDataCategories() {
+      try {
+        const response = await apiClient.get(`/api/categories`);
+        this.categories = response.data.sort((a, b) => a.order - b.order);
+      } catch (error) {
+        console.error("Error fetching categories data:", error);
+      }
     },
 
-    fetchDataArticle() {
-      apiClient
-        .get(`/api/articles`)
-        .then((response) => {
-          const data = response.data.filter(
-            (data) => data.status === PUBLISHED
-          );
-          this.articleData = data;
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
+    async fetchDataArticle() {
+      try {
+        const response = await apiClient.get(`/api/articles`);
+        const data = response.data.filter((data) => data.status === PUBLISHED);
+        this.articleData = data;
+      } catch (error) {
+        console.error("Error fetching articles data:", error);
+      }
     },
   },
 };
@@ -149,6 +144,4 @@ export default {
     padding-top: 20px;
   }
 }
-
-
 </style>
