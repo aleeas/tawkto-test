@@ -22,16 +22,11 @@
           <div>
             <Carousel
               :perPage="3"
-              :perPageCustom="[
-                [360, 1],
-                [400, 1],
-                [480, 1],
-                [768, 2],
-                [1024, 3],
-              ]"
+              :perPageCustom="responsive"
               :navigationEnabled="true"
               navigationNextLabel='<span class="next-arrow"><i class="fas fa-chevron-circle-right fa-2x"></i></span>'
               navigationPrevLabel='<span class="prev-arrow"><i class="fas fa-chevron-circle-left fa-2x"></i></span>'
+              class="carousel-slide"
             >
               <Slide v-for="category in filteredCategories" :key="category.id">
                 <Card :data="category" />
@@ -67,6 +62,14 @@ export default {
       detailData: {},
       articleData: [],
       categories: [],
+      responsive: [
+        [320, 1],
+        [360, 1],
+        [400, 1],
+        [500, 2],
+        [700, 2],
+        [768, 3],
+      ],
     };
   },
   mounted() {
@@ -142,6 +145,14 @@ export default {
   }
   .content {
     padding-top: 20px;
+  }
+}
+.carousel-slide {
+  .card {
+    @media (max-width: 1152px) {
+      max-width: 60%;
+      margin: auto;
+    }
   }
 }
 </style>
