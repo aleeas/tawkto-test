@@ -49,7 +49,7 @@ export default {
 @import "../../../scss/variables";
 .card {
   text-align: center;
-  flex: 1;
+  width:100%;
   border: 1px solid #eeeeee;
   height: 100%;
   max-width: 280px;
@@ -107,7 +107,7 @@ export default {
     }
   }
   @media (max-width: 600px) {
-    max-width: 93%;
+    max-width: 98%;
     margin-bottom: 20px;
   }
 }

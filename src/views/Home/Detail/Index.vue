@@ -26,11 +26,12 @@
                 [360, 1],
                 [400, 1],
                 [480, 1],
+                [768, 2],
                 [1024, 3],
               ]"
               :navigationEnabled="true"
-              navigationNextLabel='<span style="color: #bbb;"><i class="fas fa-chevron-circle-right fa-2x"></i></span>'
-              navigationPrevLabel='<span style="color: #bbb;"><i class="fas fa-chevron-circle-left fa-2x"></i></span>'
+              navigationNextLabel='<span class="next-arrow"><i class="fas fa-chevron-circle-right fa-2x"></i></span>'
+              navigationPrevLabel='<span class="prev-arrow"><i class="fas fa-chevron-circle-left fa-2x"></i></span>'
             >
               <Slide v-for="category in filteredCategories" :key="category.id">
                 <Card :data="category" />
@@ -66,15 +67,6 @@ export default {
       detailData: {},
       articleData: [],
       categories: [],
-      slickOptions: {
-        // Add your slick options here
-        arrows: true,
-        dots: false,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-      },
     };
   },
   mounted() {
@@ -134,14 +126,14 @@ export default {
   gap: 60px;
   .detail-list {
     display: flex;
-    flex: 1;
+    width: 100%;
     gap: 18px;
     flex-direction: column;
   }
   @media (max-width: 600px) {
     display: block;
     .detail-list {
-      max-width: 93%;
+      max-width: 98%;
     }
   }
 }
@@ -157,4 +149,6 @@ export default {
     padding-top: 20px;
   }
 }
+
+
 </style>

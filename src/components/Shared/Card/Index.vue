@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="goToDetail(data.id)">
+  <div class="card carousel" @click="goToDetail(data.id)">
     <IconComponent :icon="data.icon" />
     <h4>{{ data.title }}</h4>
     <div class="description">
@@ -43,10 +43,10 @@ export default {
 @import "../../../scss/variables";
 .card {
   text-align: center;
-  flex: 1 1 33.333%;
   border: 1px solid #eeeeee;
   padding: 36px 32px;
   height: 220px;
+  width: 100%;
   max-width: 315px;
   background: $bg-white-color;
   border-radius: $border-radius;
@@ -68,13 +68,27 @@ export default {
       font-size: 11px;
     }
   }
-  @media (min-width: 576px) {
-    flex: 1 1 50%; // 2 items per row on small screens
+
+  @media (min-width: 1024px) and (max-width: 1280px) {
+    max-width: 24.5%;
+  }
+  @media (min-width: 821px) and (max-width: 1023px) {
+    max-width: 22.4%;
+  }
+  @media (max-width: 820px) {
+    max-width: 38.5%;
+  }
+  @media (max-width: 780px) {
+    max-width: 38%;
+  }
+  @media (max-width: 768px) {
+    max-width: 33.7%;
+    margin: auto;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     max-width: 100%;
-    flex: 0.92; // 2 items per row on small screens
+    padding: 10px;
   }
 }
 </style>
