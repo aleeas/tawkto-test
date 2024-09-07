@@ -19,9 +19,13 @@ export default {
 
   methods: {
     handleSearch(query) {
+      if (!query.trim()) {
+        // Handle empty search or show a message
+        alert('Search query cannot be empty')
+        return;
+      }
       // Navigate to the search results page with the query as a URL parameter
       this.$router.push({ name: "searchResults", query: { q: query } });
- 
     },
   },
 };
@@ -32,11 +36,10 @@ export default {
 #app {
   .layout {
     background-color: $bg-gray;
-    height: 100%;
+    min-height: 100vh;
     .loading {
       text-align: center;
     }
   }
 }
-
 </style>
